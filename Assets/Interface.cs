@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 
 //ТЕСТ ГИТА КОНТРОЛЯ ВЕРСИЙ.
-
+//ТЕСТ ГИТА КОНТРОЛЯ ВЕРСИЙ 2.
 public class Interface : MonoBehaviour {
 	public float cooltime = 2.0f;
 	public float skrittime = 2.0f;
