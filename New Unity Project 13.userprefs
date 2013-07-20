@@ -1,0 +1,34 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Standard Assets\GameInterface.cs">
+    <Files>
+      <File FileName="..\SPRaces\Assets\AllScripts\BOMB.js" Line="14" Column="1" />
+      <File FileName="Assets\Standard Assets\PlayerEnemy.cs" Line="46" Column="27" />
+      <File FileName="Assets\Standard Assets\Build.cs" Line="15" Column="1" />
+      <File FileName="Assets\Standard Assets\AIfind.cs" Line="29" Column="49" />
+      <File FileName="Assets\Sources\LightningBolt.cs" Line="140" Column="76" />
+      <File FileName="Assets\Standard Assets\BulletSpawn.js" Line="21" Column="63" />
+      <File FileName="Assets\Standard Assets\BotImputWall.js" Line="21" Column="25" />
+      <File FileName="Assets\Standard Assets\GeneratorGold.js" Line="2" Column="1" />
+      <File FileName="Assets\Standard Assets\FromElectric.js" Line="4" Column="20" />
+      <File FileName="Assets\Standard Assets\LookAtCarBot.js" Line="58" Column="10" />
+      <File FileName="Assets\Standard Assets\FindCloser.js" Line="43" Column="40" />
+      <File FileName="Assets\Standard Assets\SpawnBots.js" Line="48" Column="41" />
+      <File FileName="Assets\Standard Assets\UpgradesBuilds.js" Line="43" Column="33" />
+      <File FileName="Assets\Standard Assets\Life.js" Line="71" Column="2" />
+      <File FileName="Assets\timer.js" Line="71" Column="8" />
+      <File FileName="Assets\newScripts\HomingMissle.js" Line="41" Column="17" />
+      <File FileName="Assets\ShurikenMagic\Scripts\SM_destroyThisTimed1.js" Line="3" Column="1" />
+      <File FileName="Assets\newScripts\DontRotate.js" Line="10" Column="32" />
+      <File FileName="Assets\newScripts\ShakeObject.js" Line="10" Column="1" />
+      <File FileName="Assets\Standard Assets\GlobalTriggerKill.js" Line="14" Column="20" />
+      <File FileName="Assets\Standard Assets\MainWaves.js" Line="155" Column="23" />
+      <File FileName="Assets\Standard Assets\CameraZoom.js" Line="92" Column="25" />
+      <File FileName="Assets\Standard Assets\GameInterface.cs" Line="112" Column="41" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>
