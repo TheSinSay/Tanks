@@ -84,7 +84,6 @@ if(shake_intensity > 0){
 
 }
  
- 
 function Shake(){
     originPosition = transform.position;
     originRotation = transform.rotation;
