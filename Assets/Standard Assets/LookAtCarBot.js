@@ -76,8 +76,11 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     if (target != null) {
         var rot:Vector3 = transform.eulerAngles;
 		if (isOneTurret || isTwoTurret || isRocketTurret){
-		transform.LookAt(target.transform);
-		transform.eulerAngles = new Vector3(rot.x, transform.eulerAngles.y-90, rot.z);
+		var targetPoint = target.transform.position;
+            var targetRotation = Quaternion.LookRotation(targetPoint - transform.position, Vector3.up);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 9.0);   
+		//transform.LookAt(target.transform*Vector3.up);
+		//transform.eulerAngles = new Vector3(rot.x, transform.eulerAngles.y-90, rot.z);
 		} else 
 		if (isLazerTurret) transform.LookAt(target.transform);		
 		 if (isOneTurret) { 

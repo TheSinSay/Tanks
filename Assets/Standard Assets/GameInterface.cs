@@ -195,6 +195,7 @@ public class GameInterface : MonoBehaviour {
 	public bool purchased = false;
 	public bool accept = true;
 	public bool denied = false;
+	public bool LifeUp=false;
 	//public bool result = false;
 	//public bool recept=false;
 	
@@ -252,6 +253,7 @@ public class GameInterface : MonoBehaviour {
 			spell_1 = false;
 			spell_2 = false;
 			spell_3 = true;
+			LifeUp=true;
 		}
 		GUI.EndGroup();
 //		//Панель умений
@@ -736,6 +738,10 @@ public class GameInterface : MonoBehaviour {
 				GlobalExplosion=false;
 			//}
 		}
+//		if (LifeUp){
+//			
+//		LifeUp=false;
+//		}
 	}
 	
 	void Start () {

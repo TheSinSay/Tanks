@@ -34,6 +34,8 @@ var accept:boolean = true;
 var denied:boolean = false;
 var zaglushkaGI:boolean=false;
 var UpgWindow:GameObject;
+var LifeUp:boolean=false;
+private var millitaries:GameObject[];
 //var goTime:boolean=false;
 //var st:boolean=true;
 //var tex:Texture2D;
@@ -66,10 +68,12 @@ function ConvertTimeToString()			//Конвертация времени
 
 function OnGUI()
 {
+millitaries=GameObject.FindGameObjectsWithTag("Player"); 
 var scrUpgWin:UpgradesBuilds=UpgWindow.GetComponent("UpgradesBuilds");
 WaveTime = Time.timeSinceLevelLoad + startTime;
 currTime=ConvertTimeToString().ToString();
 currWave=genWaves.ToString();
+LifeUp=transform.GetComponent("GameInterface").LifeUp;    //Спелл для максимального увеличения жизни пушек
 transform.GetComponent("GameInterface").currWave=currWave;
 transform.GetComponent("GameInterface").currGold=currGold;
 transform.GetComponent("GameInterface").currTime=currTime;
@@ -142,6 +146,16 @@ GO();
 wv=false;
 }
 }
+}
+if (LifeUp){
+for (var millitary:GameObject in millitaries) 
+{
+var compLife:Life=millitary.GetComponent("Life");
+compLife.life=compLife.maxLife;
+compLife.percent=compLife.maxLife;
+compLife.shooting=true;
+}
+transform.GetComponent("GameInterface").LifeUp=false;
 }
 }
 
