@@ -1,6 +1,5 @@
 using UnityEngine;
 using System.Collections;
-//Тест
 //Тест 2
 public class Interface : MonoBehaviour {
 	public float cooltime = 2.0f;
