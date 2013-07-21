@@ -20,6 +20,7 @@ private var CamInterface:GameObject;
 var purchased:boolean=false;
 var accept:boolean=true;
 var denied:boolean=false;
+var guiskin:GUISkin;
 
 function Start () {
 CamInterface=GameObject.Find("Main Camera");
@@ -54,7 +55,7 @@ if (recti<=1){tolevel=fromlevel-1;recti=0;}
 if (rectj<=1){rectj=0;}
 if (recti>1 && rectj>1){
 GUI.BeginGroup(new Rect (rectX,rectY, 150, 90));
-       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд");
+       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд",guiskin.customStyles[1]);
     GUI.EndGroup();
 }
 
@@ -66,14 +67,14 @@ rectj+=5.5;
 if (recti>=89){tolevel=fromlevel+1;recti=90;}
 if (rectj>=149){rectj=150;}
 GUI.BeginGroup(new Rect (rectX,rectY, 150, 90));
-       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд");
+       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд",guiskin.customStyles[1]);
  
        GUI.BeginGroup(new Rect(5,25, 144, 87));
-         GUI.Label(Rect(0,0, 150, 40), "Ур."+fromlevel+" ---> Ур."+tolevel);
+         GUI.Label(Rect(0,0, 150, 40), "Ур."+fromlevel+" ---> Ур."+tolevel,guiskin.customStyles[1]);
        GUI.EndGroup();
        
        GUI.BeginGroup(new Rect(5,45, 144, 87));
-         GUI.Label(Rect(0,0, 150, 40), "Стоим. "+cash+"$");
+         GUI.Label(Rect(0,0, 150, 40), "Стоим. "+cash+"$",guiskin.customStyles[1]);
        GUI.EndGroup();
        
        GUI.BeginGroup(new Rect(5,65, 145, 20));

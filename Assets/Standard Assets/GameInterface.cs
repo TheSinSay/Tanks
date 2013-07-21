@@ -105,7 +105,7 @@ public class GameInterface : MonoBehaviour {
 	private bool knopka_5_dostypna = true;
 	private bool knopka_6_dostypna = true;
 	private bool knopka_7_dostypna = true;
-	private bool knopka_8_dostypna = true;
+	private bool knopka_8_dostypna = false;
 	private bool knopka_9_dostypna = false;
 	private bool knopka_10_dostypna = false;
 	private bool knopka_11_dostypna = false;

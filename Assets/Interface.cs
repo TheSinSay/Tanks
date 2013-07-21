@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
-//Тест
+//Тест ГИТА 11111111
+//Тест ГИТА 22222222
 public class Interface : MonoBehaviour {
 	public float cooltime = 2.0f;
 	public float skrittime = 2.0f;
