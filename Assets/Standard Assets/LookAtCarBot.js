@@ -47,6 +47,7 @@ var select:boolean=false;
 var select1:boolean=false;
 var currObj:boolean=false;
 var inpSign:Transform;
+var kategory1:boolean=false;
 
  
  
@@ -135,17 +136,56 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
 		 var curBul:BulletSpawn=Bul.GetComponent("BulletSpawn");
     		 curBul.powerstart=powerstart;
     		 curBul.powerend=powerend;
+    		 if (!kategory1){
 		 if(fromlevel==1) cash=cashes[0];
     		 if(fromlevel==2) cash=cashes[1];
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 if (fromlevel==1){powerstart=4;powerend=6;nearestDistanceSqr=150;}
-			if (fromlevel==2){powerstart=10;powerend=12;nearestDistanceSqr=160;fastpower=6;}
-			if (fromlevel==3){powerstart=13;powerend=17;nearestDistanceSqr=170;fastpower=5;}
-			if (fromlevel==4){powerstart=20;powerend=26;nearestDistanceSqr=200;fastpower=4;}
-			if (fromlevel==5){powerstart=29;powerend=34;nearestDistanceSqr=220;fastpower=3;}
-			if (fromlevel==6){powerstart=40;powerend=45;nearestDistanceSqr=240;fastpower=2;}
+    		 if (fromlevel==1){powerstart=4;powerend=6;nearestDistanceSqr=150;
+    		 TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+"8сек";}
+			if (fromlevel==2){powerstart=10;powerend=12;nearestDistanceSqr=160;fastpower=6;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==3){powerstart=13;powerend=17;nearestDistanceSqr=170;fastpower=5;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==4){powerstart=20;powerend=26;nearestDistanceSqr=200;fastpower=4;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==5){powerstart=29;powerend=34;nearestDistanceSqr=220;fastpower=3;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==6){powerstart=40;powerend=45;nearestDistanceSqr=240;fastpower=2;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+    		 }
+    		 if (kategory1){
+		 if(fromlevel==1) cash=cashes[0];
+    		 if(fromlevel==2) cash=cashes[1];
+    		 if(fromlevel==3) cash=cashes[2];
+    		 if(fromlevel==4) cash=cashes[3];
+    		 if(fromlevel==5) cash=cashes[4];
+    		 if (fromlevel==1){powerstart=8;powerend=12;nearestDistanceSqr=170;
+    		 TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+"8сек";}
+			if (fromlevel==2){powerstart=14;powerend=19;nearestDistanceSqr=170;fastpower=6;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==3){powerstart=21;powerend=24;nearestDistanceSqr=190;fastpower=5;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==4){powerstart=26;powerend=30;nearestDistanceSqr=200;fastpower=4;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==5){powerstart=34;powerend=44;nearestDistanceSqr=220;fastpower=3;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+			if (fromlevel==6){powerstart=50;powerend=60;nearestDistanceSqr=240;fastpower=2;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 0."+fastpower+"сек";}
+    		 }
                                   //Миниган с одним дулом
     }
     	if (isTwoTurret) {   
@@ -161,12 +201,24 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 if (fromlevel==1){powerstart=4;powerend=6;nearestDistanceSqr=150;}
-			if (fromlevel==2){powerstart=12;powerend=20;nearestDistanceSqr=160;fastpower=26;}
-			if (fromlevel==3){powerstart=30;powerend=35;nearestDistanceSqr=170;fastpower=21;}
-			if (fromlevel==4){powerstart=40;powerend=47;nearestDistanceSqr=200;fastpower=17;}
-			if (fromlevel==5){powerstart=48;powerend=55;nearestDistanceSqr=220;fastpower=14;}
-			if (fromlevel==6){powerstart=56;powerend=60;nearestDistanceSqr=240;fastpower=10;}
+    		 if (fromlevel==1){powerstart=4;powerend=6;nearestDistanceSqr=150;
+    		 TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1.30"+"сек";}
+			if (fromlevel==2){powerstart=12;powerend=20;nearestDistanceSqr=160;fastpower=26;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1."+fastpower+"сек";}
+			if (fromlevel==3){powerstart=30;powerend=35;nearestDistanceSqr=170;fastpower=21;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1."+fastpower+"сек";}
+			if (fromlevel==4){powerstart=40;powerend=47;nearestDistanceSqr=200;fastpower=17;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1."+fastpower+"сек";}
+			if (fromlevel==5){powerstart=48;powerend=55;nearestDistanceSqr=220;fastpower=14;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1."+fastpower+"сек";}
+			if (fromlevel==6){powerstart=56;powerend=60;nearestDistanceSqr=240;fastpower=10;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ nearestDistanceSqr+
+    		 "\n  Скорость: 1."+fastpower+"сек";}
 		
     }
     		 if (isLazerTurret) {                          //Лазерная вышка один элемент
@@ -193,7 +245,17 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 //if (fromlevel==1) 
+    		 if (fromlevel==1){
+			for(var chLight in transform)
+    		 if (chLight.transform.name=="lightningBoltBase") //chLight.transform.active=false;
+    		 {
+    		 var chLit0:FindCloser=chLight.GetComponent("FindCloser");
+    		 chLit0.ElPowLvl=1;
+    		 chLit0.timeWantedSpeed=35;
+    		 }
+    		 TextObj="  Сила замедл: "+1+"\n  Длит. замедл: "+ 35+
+    		 "\n  Скорость: 1.0"+"сек";
+  			}
 			if (fromlevel==2){
 			for(var chLight in transform)
     		 if (chLight.transform.name=="lightningBoltBase") //chLight.transform.active=false;
@@ -202,6 +264,8 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 chLit.ElPowLvl=0.9;
     		 chLit.timeWantedSpeed=40;
     		 }
+    		 TextObj="  Сила замедл: "+0.9+"\n  Длит. замедл: "+ 40+
+    		 "\n  Скорость: 1.0"+"сек";
   			}
 			if (fromlevel==3){
 			for(var chLight in transform)
@@ -211,6 +275,8 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 chLit1.ElPowLvl=0.9;
     		 chLit1.timeWantedSpeed=50;
     		 }
+    		 TextObj="  Сила замедл: "+0.9+"\n  Длит. замедл: "+ 50+
+    		 "\n  Скорость: 1.0"+"сек";
 			}
 			if (fromlevel==4){
 			for(var chLight in transform)
@@ -220,24 +286,30 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 chLit2.ElPowLvl=0.9;
     		 chLit2.timeWantedSpeed=60;
     		 }
+    		 TextObj="  Сила замедл: "+0.9+"\n  Длит. замедл: "+ 60+
+    		 "\n  Скорость: 1.0"+"сек";
 			}
 			if (fromlevel==5){
 			for(var chLight in transform)
     		 if (chLight.transform.name=="lightningBoltBase") //chLight.transform.active=false;
     		 {
     		 var chLit3:FindCloser=chLight.GetComponent("FindCloser");
-    		 chLit3.ElPowLvl=0.9;
+    		 chLit3.ElPowLvl=0.8;
     		 chLit3.timeWantedSpeed=100;
     		 }
+    		 TextObj="  Сила замедл: "+0.8+"\n  Длит. замедл: "+ 100+
+    		 "\n  Скорость: 1.0"+"сек";
 			}
 			if (fromlevel==6){
 			for(var chLight in transform)
     		 if (chLight.transform.name=="lightningBoltBase") //chLight.transform.active=false;
     		 {
     		 var chLit4:FindCloser=chLight.GetComponent("FindCloser");
-    		 chLit4.ElPowLvl=0.9;
+    		 chLit4.ElPowLvl=0.7;
     		 chLit4.timeWantedSpeed=150;
     		 }
+    		 TextObj="  Сила замедл: "+0.7+"\n  Длит. замедл: "+ 150+
+    		 "\n  Скорость: 1.0"+"сек";
 			}
     		
 			}
@@ -258,12 +330,24 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 if (fromlevel==1){powerstart=10;powerend=12;genStart=5;genEnd=8;}
-			if (fromlevel==2){powerstart=15;powerend=30;genStart=4;genEnd=7;}
-			if (fromlevel==3){powerstart=45;powerend=55;genStart=3;genEnd=6;}
-			if (fromlevel==4){powerstart=60;powerend=80;genStart=2;genEnd=4;}
-			if (fromlevel==5){powerstart=90;powerend=120;genStart=1;genEnd=3;}
-			if (fromlevel==6){powerstart=150;powerend=160;genStart=0.5;genEnd=2;}
+    		 if (fromlevel==1){powerstart=10;powerend=12;genStart=5;genEnd=8;
+    		 TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
+			if (fromlevel==2){powerstart=15;powerend=30;genStart=4;genEnd=7;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
+			if (fromlevel==3){powerstart=45;powerend=55;genStart=3;genEnd=6;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
+			if (fromlevel==4){powerstart=60;powerend=80;genStart=2;genEnd=4;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
+			if (fromlevel==5){powerstart=90;powerend=120;genStart=1;genEnd=3;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
+			if (fromlevel==6){powerstart=150;powerend=160;genStart=0.5;genEnd=2;
+			TextObj="  Сила: "+powerstart+"-"+powerend+"\n  Дистанция: "+ 500+
+    		 "\n  Запуск: "+genStart+"-"+genEnd+"сек";}
 			}
 			
 			if (isGoldGenerator){
@@ -273,12 +357,18 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 if (fromlevel==1){scrGoldUpg.secAvailable=30;scrGoldUpg.AvailableGold=1;}
-			if (fromlevel==2){scrGoldUpg.secAvailable=25;scrGoldUpg.AvailableGold=1;}
-			if (fromlevel==3){scrGoldUpg.secAvailable=20;scrGoldUpg.AvailableGold=2;}
-			if (fromlevel==4){scrGoldUpg.secAvailable=20;scrGoldUpg.AvailableGold=3;}
-			if (fromlevel==5){scrGoldUpg.secAvailable=15;scrGoldUpg.AvailableGold=7;}
-			if (fromlevel==6){scrGoldUpg.secAvailable=10;scrGoldUpg.AvailableGold=10;}
+    		 if (fromlevel==1){scrGoldUpg.secAvailable=15;scrGoldUpg.AvailableGold=1;
+    		 TextObj="  Генерация: "+15+"сек"+"\n  Единицы: +"+ 30;}
+			if (fromlevel==2){scrGoldUpg.secAvailable=10;scrGoldUpg.AvailableGold=1;
+			TextObj="  Генерация: "+10+"сек"+"\n  Единицы: +"+ 30;}
+			if (fromlevel==3){scrGoldUpg.secAvailable=5;scrGoldUpg.AvailableGold=2;
+			TextObj="  Генерация: "+5+"сек"+"\n  Единицы: +"+ 60;}
+			if (fromlevel==4){scrGoldUpg.secAvailable=5;scrGoldUpg.AvailableGold=3;
+			TextObj="  Генерация: "+5+"сек"+"\n  Единицы: +"+ 100;}
+			if (fromlevel==5){scrGoldUpg.secAvailable=3;scrGoldUpg.AvailableGold=7;
+			TextObj="  Генерация: "+3+"сек"+"\n  Единицы: +"+ 400;}
+			if (fromlevel==6){scrGoldUpg.secAvailable=2;scrGoldUpg.AvailableGold=10;
+			TextObj="  Генерация: "+2+"сек"+"\n  Единицы: +"+ 900;}
 			}
 			
 			if (isWall){
@@ -288,12 +378,18 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
     		 if(fromlevel==3) cash=cashes[2];
     		 if(fromlevel==4) cash=cashes[3];
     		 if(fromlevel==5) cash=cashes[4];
-    		 if (fromlevel==1){scrWallupg.wallStrength=5;scrWallupg.AfterWallSpeed=0.5;}
-			if (fromlevel==2){scrWallupg.wallStrength=15;scrWallupg.AfterWallSpeed=0.5;}
-			if (fromlevel==3){scrWallupg.wallStrength=30;scrWallupg.AfterWallSpeed=0.5;}
-			if (fromlevel==4){scrWallupg.wallStrength=80;scrWallupg.AfterWallSpeed=0.5;}
-			if (fromlevel==5){scrWallupg.wallStrength=100;scrWallupg.AfterWallSpeed=0.5;}
-			if (fromlevel==6){scrWallupg.wallStrength=150;scrWallupg.AfterWallSpeed=0.5;}
+    		 if (fromlevel==1){scrWallupg.wallStrength=5;scrWallupg.AfterWallSpeed=0.5;
+    		 TextObj="  Сила при ударе: "+5+"\n  Длит. замедл: "+ 0.5;}
+			if (fromlevel==2){scrWallupg.wallStrength=15;scrWallupg.AfterWallSpeed=0.5;
+			TextObj="  Сила при ударе: "+15+"\n  Длит. замедл: "+ 0.5;}
+			if (fromlevel==3){scrWallupg.wallStrength=30;scrWallupg.AfterWallSpeed=0.5;
+			TextObj="  Сила при ударе: "+30+"\n  Длит. замедл: "+ 0.5;}
+			if (fromlevel==4){scrWallupg.wallStrength=80;scrWallupg.AfterWallSpeed=0.5;
+			TextObj="  Сила при ударе: "+80+"\n  Длит. замедл: "+ 0.5;}
+			if (fromlevel==5){scrWallupg.wallStrength=100;scrWallupg.AfterWallSpeed=0.5;
+			TextObj="  Сила при ударе: "+100+"\n  Длит. замедл: "+ 0.5;}
+			if (fromlevel==6){scrWallupg.wallStrength=150;scrWallupg.AfterWallSpeed=0.5;
+			TextObj="  Сила при ударе: "+150+"\n  Длит. замедл: "+ 0.5;}
 			}
     
     if (isCollider)
@@ -539,6 +635,7 @@ UpgradedWindow=GameObject.Find("UpgradeWindow");
 		scrUp.rectX=rectX;
 		scrUp.rectY=rectY;
 		scrUp.CurrentBuild[0]=gameObject;
+		scrUp.TextObj=TextObj;
 		scrUp.clicked=true;
 		scrUp.select=false;
 		//clicked=false;
@@ -661,7 +758,7 @@ function GetNearestTaggedObject() : Transform {
 // 	if (!isRocketTurret)
 //    nearestDistanceSqr = 150.0;
     if (isRocketTurret)
-    nearestDistanceSqr = 300.0;
+    nearestDistanceSqr = 500.0;
     var EnemySimple = new Array (GameObject.FindGameObjectsWithTag (searchTag) );
 	var EnemyDetected = new Array (GameObject.FindGameObjectsWithTag ("Detected") );
 	var taggedGameObjects = EnemySimple.Concat(EnemyDetected).ToBuiltin(GameObject);
