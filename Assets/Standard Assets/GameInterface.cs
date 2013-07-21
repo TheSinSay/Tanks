@@ -99,13 +99,14 @@ public class GameInterface : MonoBehaviour {
 	public int collichestvo_knopok = 0;
 	private float dlinnaScrolla = 0;
 	//Булевые переменные доступности кнопок
-	private bool knopka_1_dostypna = true;
-	private bool knopka_2_dostypna = false;
-	private bool knopka_3_dostypna = false;
-	private bool knopka_4_dostypna = false;
-	private bool knopka_5_dostypna = false;
-	private bool knopka_6_dostypna = false;
-	private bool knopka_7_dostypna = false; //для демо
+	private bool knopka_1_dostypna = true;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_2_dostypna = true;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_3_dostypna = false; //Серверная переменная если построены здания на 1 экране
+	private bool knopka_4_dostypna = false;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_5_dostypna = false;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_6_dostypna = false;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_7_dostypna = false; //Серверная переменная если построены здания на 1 экране
+	//////////////////////////////////////////для демо первые 7 кнопок
 	private bool knopka_8_dostypna = false;
 	private bool knopka_9_dostypna = false;
 	private bool knopka_10_dostypna = false;
@@ -209,6 +210,10 @@ public class GameInterface : MonoBehaviour {
 	public bool accept = true;
 	public bool denied = false;
 	public bool LifeUp=false;
+	private bool canScaling=false;   //Серверная переменная разрешено если здание построено(ЭМИ)
+	private bool canLifeUp=false;	//Серверная переменная разрешено если построена Мастерская(Восстановление жизней)
+	private bool canGE=false;		//Серверная переменная разрешена(Ядерный взрыв) ТОЛЬКО ДЛЯ ПОЛНОЙ ВЕРСИИ
+	public bool notEnough=false;
 	//public bool result = false;
 	//public bool recept=false;
 	
@@ -247,21 +252,21 @@ public class GameInterface : MonoBehaviour {
 		
 		GUI.BeginGroup(new Rect(widthper * (1010/(float)10.9),heightper * (370/(float)7.3),widthper * (80/(float)10.9),heightper * (220/(float)7.3)));
 		GUI.DrawTexture(new Rect(0,0,widthper * (80/(float)10.9),heightper * (220/(float)7)),SpellPanel);
-		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (10/(float)5),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"1",guiskin.customStyles[11]))
+		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (10/(float)5),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"1",guiskin.customStyles[11]) && canScaling)
 		{
 			spell_1 = true;
 			spell_2 = false;
 			spell_3 = false;
 			Scaling=true;
 		}
-		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (80/(float)7),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"2",guiskin.customStyles[11]))
+		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (80/(float)7),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"2",guiskin.customStyles[11]) && canGE)
 		{
 			spell_1 = false;
 			spell_2 = true;
 			spell_3 = false;
 			GlobalExplosion=true;
 		}
-		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (150/(float)7.2),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"3",guiskin.customStyles[11]))
+		if (GUI.Button(new Rect (widthper * (10/(float)10.9),heightper * (150/(float)7.2),widthper * (60/(float)10.9),heightper * (60/(float)7.3)),"3",guiskin.customStyles[11]) && canLifeUp)
 		{	
 			spell_1 = false;
 			spell_2 = false;
@@ -293,7 +298,10 @@ public class GameInterface : MonoBehaviour {
 		//GUI.color = Color.yellow;
 		//GUI.DrawTexture(new Rect(widthper * (0/(float)10.9),heightper * (0/(float)7.3),widthper * (575/(float)10.9),heightper * (175/(float)7.3)),infopanel);
 		GUI.Label(new Rect(widthper * (435/coordx),heightper * (60/coordy),widthper * (80/(float)10.9),heightper * (20/(float)7.3)),currTime,guiskin.customStyles[0]);
+		if (!notEnough)
 		GUI.Label(new Rect(widthper * (435/coordx2),heightper * (100/coordy2),widthper * (80/(float)10.9),heightper * (20/(float)7.3)),currGold,guiskin.customStyles[0]);
+		if (notEnough)
+		GUI.Label(new Rect(widthper * (435/coordx2),heightper * (100/coordy2),widthper * (80/(float)10.9),heightper * (20/(float)7.3)),"Не хватает средств",guiskin.customStyles[0]);		//проверка на достаточность средств из UpgradesBuilds->MainWaves в этот скрипт и показ сообщения																																							//////для всплывающей надписи недостаточно ср-в
 		GUI.Label(new Rect(widthper * (275/coordx1),heightper * (70/coordy1),widthper * (40/(float)10.9),heightper * (20/(float)7.3)),currWave,guiskin.customStyles[0]);
 		GUI.EndGroup();
 		//Пауза и последующие после неё меню
@@ -602,12 +610,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect8");
 				if(widthper * (690 /(float)10.9) - hSliderValue > 0 && widthper * (690 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (690 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
+					GUI.Box(new Rect(widthper * (690 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_8_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (690 /(float)10.9) - hSliderValue > 0)) && widthper * (690/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_8_knopki,guiskin.customStyles[1]);
 				if(widthper * (690 /(float)10.9) - hSliderValue > 0 && (!(widthper * (690 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_8_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_9,guiskin.customStyles[11]))
 			{
@@ -629,12 +637,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect9");
 				if(widthper * (787 /(float)10.9) - hSliderValue > 0 && widthper * (787 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
+					GUI.Box(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_9_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (787 /(float)10.9) - hSliderValue > 0)) && widthper * (787/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_9_knopki,guiskin.customStyles[1]);
 				if(widthper * (787 /(float)10.9) - hSliderValue > 0 && (!(widthper * (787 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_9_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_10,guiskin.customStyles[11]))
 			{
@@ -656,12 +664,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect10");
 				if(widthper * (884 /(float)10.9) - hSliderValue > 0 && widthper * (884 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
+					GUI.Box(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_10_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (884 /(float)10.9) - hSliderValue > 0)) && widthper * (884/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_10_knopki,guiskin.customStyles[1]);
 				if(widthper * (884 /(float)10.9) - hSliderValue > 0 && (!(widthper * (884 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_10_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_11,guiskin.customStyles[11]))
 			{
@@ -683,12 +691,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect11");
 				if(widthper * (981 /(float)10.9) - hSliderValue > 0 && widthper * (981 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
+					GUI.Box(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_11_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (981 /(float)10.9) - hSliderValue > 0)) && widthper * (981/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_11_knopki,guiskin.customStyles[1]);
 				if(widthper * (981 /(float)10.9) - hSliderValue > 0 && (!(widthper * (981 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_11_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_12,guiskin.customStyles[11]))
 			{
@@ -710,12 +718,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect12");
 				if(widthper * (1078 /(float)10.9) - hSliderValue > 0 && widthper * (1078 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
+					GUI.Box(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_12_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (1078 /(float)10.9) - hSliderValue > 0)) && widthper * (1078/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_12_knopki,guiskin.customStyles[1]);
 				if(widthper * (1078 /(float)10.9) - hSliderValue > 0 && (!(widthper * (1078 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_12_knopki,guiskin.customStyles[1]);
 			}
 		}
 		GUI.EndGroup();
@@ -754,7 +762,7 @@ public class GameInterface : MonoBehaviour {
 			Instantiate(ExplosionBody, Body.transform.position, Quaternion.identity);
 				GlobalExplosion=false;
 			//}
-				GlobalExplosion=false;
+				//GlobalExplosion=false;
 			//}
 		}
 //		if (LifeUp){
@@ -1940,7 +1948,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_1_knopki="Нет данных";
+			Text_1_knopki="\n\n                Нет данных";
 			knopka_zdanyi_1 = knopka_zdanyi_1_nedostypna;
 		}
 		if(knopka_2_dostypna)
@@ -1958,7 +1966,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_3_knopki="Нет данных";
+			Text_3_knopki="\n\n                Нет данных";
 			knopka_zdanyi_3 = knopka_zdanyi_3_nedostypna;
 		}
 		if(knopka_4_dostypna)
@@ -1967,7 +1975,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_4_knopki="Нет данных";
+			Text_4_knopki="\n\n                Нет данных";
 			knopka_zdanyi_4 = knopka_zdanyi_4_nedostypna;
 		}
 		if(knopka_5_dostypna)
@@ -1976,7 +1984,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_5_knopki="Нет данных";
+			Text_5_knopki="\n\n                Нет данных";
 			knopka_zdanyi_5 = knopka_zdanyi_5_nedostypna;
 		}
 		if(knopka_6_dostypna)
@@ -1985,7 +1993,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_6_knopki="Нет данных";
+			Text_6_knopki="\n\n                Нет данных";
 			knopka_zdanyi_6 = knopka_zdanyi_6_nedostypna;
 		}
 		if(knopka_7_dostypna)
@@ -1994,7 +2002,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_7_knopki="Нет данных";
+			Text_7_knopki="\n\n                Нет данных";
 			knopka_zdanyi_7 = knopka_zdanyi_7_nedostypna;
 		}
 		if(knopka_8_dostypna)
@@ -2003,7 +2011,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_8_knopki="Нет данных";
+			Text_8_knopki="\n\n                Нет данных";
 			knopka_zdanyi_8 = knopka_zdanyi_8_nedostypna;
 		}
 		if(knopka_9_dostypna)
@@ -2012,7 +2020,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_9_knopki="Нет данных";
+			Text_9_knopki="\n\n                Нет данных";
 			knopka_zdanyi_9 = knopka_zdanyi_9_nedostypna;
 		}
 		if(knopka_10_dostypna)
@@ -2021,7 +2029,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_10_knopki="Нет данных";
+			Text_10_knopki="\n\n                Нет данных";
 			knopka_zdanyi_10 = knopka_zdanyi_10_nedostypna;
 		}
 		if(knopka_11_dostypna)
@@ -2030,7 +2038,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_11_knopki="Нет данных";
+			Text_11_knopki="\n\n                Нет данных";
 			knopka_zdanyi_11 = knopka_zdanyi_11_nedostypna;
 		}
 		if(knopka_12_dostypna)
@@ -2039,7 +2047,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
-			Text_12_knopki="\n\n       Нет данных";
+			Text_12_knopki="\n\n                Нет данных";
 			knopka_zdanyi_12 = knopka_zdanyi_12_nedostypna;
 		}
 	}

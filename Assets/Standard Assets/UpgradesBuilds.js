@@ -22,6 +22,7 @@ var accept:boolean=true;
 var denied:boolean=false;
 var guiskin:GUISkin;
 var TextObj:String;
+var notEnough:boolean=false;
 
 function Start () {
 CamInterface=GameObject.Find("Main Camera");
@@ -41,10 +42,10 @@ function OnGUI(){
 //GUI.Label(Rect(300,50,100,20),"$ "+g_sum);
 if (!can_buy) {
 time_show+=1;
-if (time_show>250) { time_show=250; }
+if (time_show>250) { notEnough=false; time_show=250; }
 if (time_show==40) denied=false;
-if (time_show<249)
-GUI.Label(Rect(400,50,200,20),"Недостаточно средств");
+if (time_show<249) notEnough=true;
+//GUI.Label(Rect(400,50,200,20),"Недостаточно средств");
 }
 //CamMain=GameObject.Find("Main Camera");
 //var scrGI:GameInterface=CamMain.GetComponent("GameInterface");
@@ -115,7 +116,7 @@ if (cash>gold_sum){
 		denied=true;
 		accept=false;
 		}
-if (cash<gold_sum){
+if (cash<=gold_sum){
 		denied=false;
 		gold_sum=gold_sum-cash;
 		can_buy=true;
