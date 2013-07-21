@@ -1,8 +1,8 @@
 using UnityEngine;
 using System.Collections;
-//Тест ГИТА 11111111
-//Тест ГИТА 22222222
-//Тест ГИТА 33333333
+
+//GIT ДАВАЙ РАБОТАЙ СКАЗАЛ!!!!))))
+
 public class Interface : MonoBehaviour {
 	public float cooltime = 2.0f;
 	public float skrittime = 2.0f;

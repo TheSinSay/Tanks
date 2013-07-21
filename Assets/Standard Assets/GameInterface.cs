@@ -87,6 +87,7 @@ public class GameInterface : MonoBehaviour {
 	private int fmx = 72;
 	private int fmx1 = 16;
 	public int fmx2=72;
+	public int fmx3=72;
 	
 	public Texture2D Builds_Bar;
 	
@@ -99,17 +100,29 @@ public class GameInterface : MonoBehaviour {
 	private float dlinnaScrolla = 0;
 	//Булевые переменные доступности кнопок
 	private bool knopka_1_dostypna = true;
-	private bool knopka_2_dostypna = true;
-	private bool knopka_3_dostypna = true;
-	private bool knopka_4_dostypna = true;
-	private bool knopka_5_dostypna = true;
-	private bool knopka_6_dostypna = true;
-	private bool knopka_7_dostypna = true;
+	private bool knopka_2_dostypna = false;
+	private bool knopka_3_dostypna = false;
+	private bool knopka_4_dostypna = false;
+	private bool knopka_5_dostypna = false;
+	private bool knopka_6_dostypna = false;
+	private bool knopka_7_dostypna = false; //для демо
 	private bool knopka_8_dostypna = false;
 	private bool knopka_9_dostypna = false;
 	private bool knopka_10_dostypna = false;
 	private bool knopka_11_dostypna = false;
 	private bool knopka_12_dostypna = false;
+	private string Text_1_knopki="\n      Миниган:  Ур.1  100$\n     Стрельба: 0.9сек\n     Сила: 2-4\n     Атака: наземные цели";
+	private string Text_2_knopki="\n      Турель:  Ур.1  300$\n     Стрельба: 0.9сек\n     Сила: 6-10\n     Атака: наземные цели";
+	private string Text_3_knopki="\n      Двустволка:  Ур.1  350$\n     Стрельба: 1.35сек\n     Сила: 3-2\n     Атака: наземные цели";
+	private string Text_4_knopki="\n      Ракетница:  Ур.1  450$\n     Запуск: 8сек\n     Сила: 9-10\n     Атака: все типы целей";
+	private string Text_5_knopki="\n      Электрорадар:  Ур.1  60$\n     Стрельба: 1сек\n     Сила замедл.: 1.2\n     Атака: все типы целей";
+	private string Text_6_knopki="\n      Простая стена:  Ур.1  50$\n     Сила при ударе: 3\n     Длит. замедл.: 0.5\n     Атака: наземные цели";
+	private string Text_7_knopki="\n      Генератор:  Ур.1  300$\n     Генерация: 15 сек\n     Единицы: +30$\n";
+	private string Text_8_knopki="Нет данных";
+	private string Text_9_knopki="Нет данных";
+	private string Text_10_knopki="Нет данных";
+	private string Text_11_knopki="Нет данных";
+	private string Text_12_knopki="Нет данных";
 	//Текстуры для доступных кнопок
 	public Texture2D knopka_zdanyi_1_dostypna;
 	public Texture2D knopka_zdanyi_2_dostypna;
@@ -224,11 +237,11 @@ public class GameInterface : MonoBehaviour {
 		
 		asprat = Mathf.Round(gameObject.camera.aspect * 100.0f) / 100.0f;
 		
-		if (asprat==1.25f) {coordx=10.5f;coordy=6.75f;coordy1=5.45f;coordy2=9.9f;coordx1=6.29f;coordx2=21.2f;coordy3=30;coordy4=11f;}
-		if (asprat==1.33f) {coordx=10.5f;coordy=6.2f;coordy1=5f;coordy2=9.1f;coordx1=6.29f;coordx2=21.4f;coordy3=30;coordy4=11f;}
-		if (asprat==1.5f) {coordx=10.35f;coordy=5.65f;coordy1=4.5f;coordy2=8.3f;coordx1=6.15f;coordx2=20.14f;coordy3=17;coordy4=9f;}
-		if (asprat==1.6f) {coordx=10.25f;coordy=6.23f;coordy1=4.7f;coordy2=9.04f;coordx1=6.15f;coordx2=20.14f;coordy3=17;coordy4=9f;}
-		if (asprat==1.78f) {coordx=10.35f;coordy=5.5f;coordy1=4.2f;coordy2=8.1f;coordx1=6.21f;coordx2=20.14f;coordy3=0;coordy4=7.3f;}
+		if (asprat==1.25f) {coordx=10.5f;coordy=6.75f;coordy1=5.45f;coordy2=9.9f;coordx1=6.29f;coordx2=21.2f;coordy3=21;coordy4=9.46f;fmx3=65;}
+		if (asprat==1.33f) {coordx=10.5f;coordy=6.2f;coordy1=5f;coordy2=9.1f;coordx1=6.29f;coordx2=21.4f;coordy3=21;coordy4=9.46f;fmx3=70;}
+		if (asprat==1.5f) {coordx=10.35f;coordy=5.65f;coordy1=4.5f;coordy2=8.3f;coordx1=6.15f;coordx2=20.14f;coordy3=-1;coordy4=7.27f;fmx3=80;}
+		if (asprat==1.6f) {coordx=10.25f;coordy=6.23f;coordy1=4.7f;coordy2=9.04f;coordx1=6.15f;coordx2=20.14f;coordy3=-1;coordy4=7.27f;fmx3=80;}
+		if (asprat==1.78f) {coordx=10.35f;coordy=5.5f;coordy1=4.2f;coordy2=8.1f;coordx1=6.21f;coordx2=20.14f;coordy3=-1;coordy4=7.27f;fmx3=80;}
 //		
 		RenderSettings.ambientLight = Color.Lerp (RenderSettings.ambientLight, colors[currentColor], changeTime*Time.deltaTime);
 		
@@ -375,7 +388,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
-					cash=300;
+					cash=100;
 					//accept=true;
 					Builds_Button_Array[0] = true;
 					StratMod = true;
@@ -389,12 +402,12 @@ public class GameInterface : MonoBehaviour {
 				if(widthper * (10 /(float)10.9) - hSliderValue > 0 && widthper * (10 /(float)10.9) - hSliderValue < 709)
 				{
 					
-					GUI.Box(new Rect(widthper * (10 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)coordy4)),"\n      Миниган:  Ур.1  300$\n     Стрельба: 0.9сек\n     Сила: 1.2\n     Атака: наземные цели",guiskin.customStyles[1]);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)coordy4)),Text_1_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (10 /(float)10.9) - hSliderValue > 0)) && widthper * (10 /(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),"\n      Миниган:  Ур.1  300$\n     Стрельба: 0.9сек\n     Сила: 1.2\n     Атака: наземные цели",guiskin.customStyles[1]);
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_1_knopki,guiskin.customStyles[1]);
 				if(widthper * (10 /(float)10.9) - hSliderValue > 0 && (!(widthper * (10 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),"\n      Миниган:  Ур.1  300$\n     Стрельба: 0.9сек\n     Сила: 1.2\n     Атака: наземные цели",guiskin.customStyles[1]);
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_1_knopki,guiskin.customStyles[1]);
 			}
 			
 			if (GUI.Button(new Rect(widthper * (108 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_2,guiskin.customStyles[11]))
@@ -406,6 +419,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=300;
 					Builds_Button_Array[1] = true;
 					StratMod = true;
 				}
@@ -419,12 +433,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect2");
 				if(widthper * (108 /(float)10.9) - hSliderValue > 0 && widthper * (108 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (108 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),"\n      Двустволка:  Ур.1  420$\n     Стрельба: 1сек\n     Сила: 1.7\n     Атака: наземные цели",guiskin.customStyles[1]);
+					GUI.Box(new Rect(widthper * (108 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_2_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (108 /(float)10.9) - hSliderValue > 0)) && widthper * (108/(float)10.9) - hSliderValue < 709){
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),"rect2");}
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_2_knopki,guiskin.customStyles[1]);}
 				if(widthper * (108 /(float)10.9) - hSliderValue > 0 && (!(widthper * (108 /(float)10.9) - hSliderValue < 709))){
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),"rect2");}
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_2_knopki,guiskin.customStyles[1]);}
 			
 			}
 			if (GUI.Button(new Rect(widthper * (205 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_3,guiskin.customStyles[11]))
@@ -436,6 +450,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=350;
 					Builds_Button_Array[2] = true;
 					StratMod = true;
 				}
@@ -447,12 +462,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect3");
 				if(widthper * (205 /(float)10.9) - hSliderValue > 0 && widthper * (205 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (205 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (205 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_3_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (205 /(float)10.9) - hSliderValue > 0)) && widthper * (205/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_3_knopki,guiskin.customStyles[1]);
 				if(widthper * (205 /(float)10.9) - hSliderValue > 0 && (!(widthper * (205 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_3_knopki,guiskin.customStyles[1]);
 			}
 			
 			if (GUI.Button(new Rect(widthper * (302 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_4,guiskin.customStyles[11]))
@@ -464,6 +479,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=450;
 					Builds_Button_Array[3] = true;
 					StratMod = true;
 				}
@@ -475,12 +491,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect4");
 				if(widthper * (302 /(float)10.9) - hSliderValue > 0 && widthper * (302 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (302 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (302 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_4_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (302 /(float)10.9) - hSliderValue > 0)) && widthper * (302/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_4_knopki,guiskin.customStyles[1]);
 				if(widthper * (302 /(float)10.9) - hSliderValue > 0 && (!(widthper * (302 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_4_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (399 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_5,guiskin.customStyles[11]))
 			{
@@ -491,6 +507,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=60;
 					Builds_Button_Array[4] = true;
 					StratMod = true;
 				}
@@ -502,12 +519,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect5");
 				if(widthper * (399 /(float)10.9) - hSliderValue > 0 && widthper * (399 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (399 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (399 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_5_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (399 /(float)10.9) - hSliderValue > 0)) && widthper * (399/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_5_knopki,guiskin.customStyles[1]);
 				if(widthper * (399 /(float)10.9) - hSliderValue > 0 && (!(widthper * (399 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_5_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (496 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_6,guiskin.customStyles[11]))
 			{
@@ -518,6 +535,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=50;
 					Builds_Button_Array[5] = true;
 					StratMod = true;
 				}
@@ -529,12 +547,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect6");
 				if(widthper * (496 /(float)10.9) - hSliderValue > 0 && widthper * (496 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (496 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (496 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_6_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (496 /(float)10.9) - hSliderValue > 0)) && widthper * (496/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_6_knopki,guiskin.customStyles[1]);
 				if(widthper * (496 /(float)10.9) - hSliderValue > 0 && (!(widthper * (496 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_6_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (593 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_7,guiskin.customStyles[11]))
 			{
@@ -545,6 +563,7 @@ public class GameInterface : MonoBehaviour {
 //					{
 //						Builds_Button_Array[i] = false;
 //					}
+					cash=300;
 					Builds_Button_Array[6] = true;
 					StratMod = true;
 				}
@@ -556,12 +575,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect7");
 				if(widthper * (593 /(float)10.9) - hSliderValue > 0 && widthper * (593 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (593 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (593 /(float)10.9) - hSliderValue,heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_7_knopki,guiskin.customStyles[1]);
 				}
 				if((!(widthper * (593 /(float)10.9) - hSliderValue > 0)) && widthper * (593/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_7_knopki,guiskin.customStyles[1]);
 				if(widthper * (593 /(float)10.9) - hSliderValue > 0 && (!(widthper * (593 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (coordy3/(float)7.3),widthper * (190/(float)10.9),heightper * (100/coordy4)),Text_7_knopki,guiskin.customStyles[1]);
 			}
 			if (GUI.Button(new Rect(widthper * (690 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_8,guiskin.customStyles[11]))
 			{
@@ -583,12 +602,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect8");
 				if(widthper * (690 /(float)10.9) - hSliderValue > 0 && widthper * (690 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (690 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (690 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
 				}
 				if((!(widthper * (690 /(float)10.9) - hSliderValue > 0)) && widthper * (690/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
 				if(widthper * (690 /(float)10.9) - hSliderValue > 0 && (!(widthper * (690 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_8_knopki);
 			}
 			if (GUI.Button(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_9,guiskin.customStyles[11]))
 			{
@@ -610,12 +629,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect9");
 				if(widthper * (787 /(float)10.9) - hSliderValue > 0 && widthper * (787 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (787 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
 				}
 				if((!(widthper * (787 /(float)10.9) - hSliderValue > 0)) && widthper * (787/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
 				if(widthper * (787 /(float)10.9) - hSliderValue > 0 && (!(widthper * (787 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_9_knopki);
 			}
 			if (GUI.Button(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_10,guiskin.customStyles[11]))
 			{
@@ -637,12 +656,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect10");
 				if(widthper * (884 /(float)10.9) - hSliderValue > 0 && widthper * (884 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (884 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
 				}
 				if((!(widthper * (884 /(float)10.9) - hSliderValue > 0)) && widthper * (884/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
 				if(widthper * (884 /(float)10.9) - hSliderValue > 0 && (!(widthper * (884 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_10_knopki);
 			}
 			if (GUI.Button(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_11,guiskin.customStyles[11]))
 			{
@@ -664,12 +683,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect11");
 				if(widthper * (981 /(float)10.9) - hSliderValue > 0 && widthper * (981 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (981 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
 				}
 				if((!(widthper * (981 /(float)10.9) - hSliderValue > 0)) && widthper * (981/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
 				if(widthper * (981 /(float)10.9) - hSliderValue > 0 && (!(widthper * (981 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_11_knopki);
 			}
 			if (GUI.Button(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (110/(float)7.3),widthper * (88/(float)10.9),heightper * (80/(float)7.3)),knopka_zdanyi_12,guiskin.customStyles[11]))
 			{
@@ -691,12 +710,12 @@ public class GameInterface : MonoBehaviour {
 				//Debug.Log("rect12");
 				if(widthper * (1078 /(float)10.9) - hSliderValue > 0 && widthper * (1078 /(float)10.9) - hSliderValue < 709)
 				{
-					GUI.Box(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (1078 /(float)10.9) - hSliderValue,heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
 				}
 				if((!(widthper * (1078 /(float)10.9) - hSliderValue > 0)) && widthper * (1078/(float)10.9) - hSliderValue < 709)
-					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (10 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
 				if(widthper * (1078 /(float)10.9) - hSliderValue > 0 && (!(widthper * (1078 /(float)10.9) - hSliderValue < 709)))
-					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),"rect2");
+					GUI.Box(new Rect(widthper * (810 /(float)10.9),heightper * (0/(float)7.3),widthper * (190/(float)10.9),heightper * (100/(float)7.3)),Text_12_knopki);
 			}
 		}
 		GUI.EndGroup();
@@ -934,14 +953,13 @@ public class GameInterface : MonoBehaviour {
 		
 		}
 		
-		
-		
-		
-		
-		if (lastHitObj&&Builds_Button_Array[1])//проследить
+		if (lastHitObj&&Builds_Button_Array[1])
 		{
+			
+			
+			
 			if (pref && !Create) {
-				TPref = Instantiate (pref2, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+				TPref = Instantiate (pref2, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
@@ -949,7 +967,9 @@ public class GameInterface : MonoBehaviour {
 					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -959,17 +979,28 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
-				Builds_Button_Array[1] = false;//проследить
+				Builds_Button_Array[1] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
 					foreach (Transform childMat in TPref)
 						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
@@ -980,15 +1011,25 @@ public class GameInterface : MonoBehaviour {
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
-					Builds_Button_Array[1] = false; //проследить
+					Builds_Button_Array[1] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[1] = false;
 				}
-			}
+			
+		
 		}
 		
-		if (lastHitObj&&Builds_Button_Array[2])//проследить
+		if (lastHitObj&&Builds_Button_Array[2])
 		{
+			
+			
+			
 			if (pref && !Create) {
-				TPref = Instantiate (pref3, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+				TPref = Instantiate (pref3, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
@@ -996,7 +1037,9 @@ public class GameInterface : MonoBehaviour {
 					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1006,17 +1049,28 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
-				Builds_Button_Array[2] = false;//проследить
+				Builds_Button_Array[2] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
 					foreach (Transform childMat in TPref)
 						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
@@ -1027,15 +1081,25 @@ public class GameInterface : MonoBehaviour {
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
-					Builds_Button_Array[2] = false; //проследить
+					Builds_Button_Array[2] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[2] = false;
 				}
-			}
+			
+		
 		}
 		
-		if (lastHitObj&&Builds_Button_Array[3])//проследить
+		if (lastHitObj&&Builds_Button_Array[3])
 		{
+			
+			
+			
 			if (pref && !Create) {
-				TPref = Instantiate (pref4, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+				TPref = Instantiate (pref4, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
@@ -1043,7 +1107,9 @@ public class GameInterface : MonoBehaviour {
 					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1053,17 +1119,28 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
-				Builds_Button_Array[3] = false;//проследить
+				Builds_Button_Array[3] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
 					foreach (Transform childMat in TPref)
 						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
@@ -1074,14 +1151,25 @@ public class GameInterface : MonoBehaviour {
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
-					Builds_Button_Array[3] = false; //проследить
+					Builds_Button_Array[3] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[3] = false;
 				}
-			}
+			
+		
 		}
-		if (lastHitObj&&Builds_Button_Array[4])//проследить
+		
+		if (lastHitObj&&Builds_Button_Array[4])
 		{
+			
+			
+			
 			if (pref && !Create) {
-				TPref = Instantiate (pref5, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+				TPref = Instantiate (pref5, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
@@ -1089,7 +1177,9 @@ public class GameInterface : MonoBehaviour {
 					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1099,17 +1189,28 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
-				Builds_Button_Array[4] = false;//проследить
+				Builds_Button_Array[4] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
 					foreach (Transform childMat in TPref)
 						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
@@ -1120,21 +1221,35 @@ public class GameInterface : MonoBehaviour {
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
-					Builds_Button_Array[4] = false; //проследить
+					Builds_Button_Array[4] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[4] = false;
 				}
-			}
+			
+		
 		}
+		
 		if (lastHitObj&&Builds_Button_Array[5])
 		{
+			
+			
+			
 			if (pref && !Create) {
 				TPref = Instantiate (pref6, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
 				Create = true;
+					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1144,39 +1259,67 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
 				Builds_Button_Array[5] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
+					foreach (Transform childMat in TPref)
+						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
 					bild.active_My = true;
+					TPref.collider.isTrigger = false;
 					lastHitObj.tag = "PlacementPlane_Taken";
 					Create = false;
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
 					Builds_Button_Array[5] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[5] = false;
 				}
-			}
+			
+		
 		}
+		
 		if (lastHitObj&&Builds_Button_Array[6])
 		{
+			
+			
+			
 			if (pref && !Create) {
 				TPref = Instantiate (pref7, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
 				Create = true;
+					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1186,39 +1329,68 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
 				Builds_Button_Array[6] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
+					foreach (Transform childMat in TPref)
+						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
 					bild.active_My = true;
+					TPref.collider.isTrigger = false;
 					lastHitObj.tag = "PlacementPlane_Taken";
 					Create = false;
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
 					Builds_Button_Array[6] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[6] = false;
 				}
-			}
+			
+		
 		}
+		
+		
 		if (lastHitObj&&Builds_Button_Array[7])
 		{
+			
+			
+			
 			if (pref && !Create) {
 				TPref = Instantiate (pref8, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
 				Build bild = (Build)TPref.GetComponent("Build");
 				bild.active_My = false;
 				TPref.gameObject.tag="Untagged";
 				Create = true;
+					
 			} else if (Create)
 			{
+
 				if(lastHitObj)
+
 					TPref.position = lastHitObj.transform.position;
 				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
 				{
@@ -1228,28 +1400,366 @@ public class GameInterface : MonoBehaviour {
 				{
 					TPref.Rotate(0,-90.0f,0);
 				}
+
 			}
+			
+			
 			if (Input.GetMouseButtonDown(1) && Create)
 			{
 				Destroy(TPref.gameObject);
 				Create = false;
 				Builds_Button_Array[7] = false;
 			}
+			
+			
+			
+			
 			if(lastHitObj.tag == "PlacementPlane_Open")
 			{
-				if (Input.GetMouseButtonDown(0) && canCreate)
-				{
+				if (Input.GetMouseButtonDown(0) && canCreate && !denied && !accept){
+				purchased=true;
+				}				
+				
+			}
+			if (accept){
+					foreach (Transform childMat in TPref)
+						if (childMat.name=="TransWhite") childMat.active=false;
 					Build bild = (Build)TPref.GetComponent("Build");
 					bild.active_My = true;
+					TPref.collider.isTrigger = false;
 					lastHitObj.tag = "PlacementPlane_Taken";
 					Create = false;
 					TPref.active=false;
 					TPref.gameObject.tag="Active";
 					TPref.active=true;
 					Builds_Button_Array[7] = false;
+				accept=false;
+					} 
+			if (denied){
+				Destroy(TPref.gameObject);
+				Create = false;
+			Builds_Button_Array[7] = false;
 				}
-			}
+			
+		
 		}
+		
+		
+		
+		
+		
+//		if (lastHitObj&&Builds_Button_Array[1])//проследить
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref2, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//					
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[1] = false;//проследить
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					foreach (Transform childMat in TPref)
+//						if (childMat.name=="TransWhite") childMat.active=false;
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					TPref.collider.isTrigger = false;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[1] = false; //проследить
+//				}
+//			}
+//		}
+//		
+//		if (lastHitObj&&Builds_Button_Array[2])//проследить
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref3, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//					
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[2] = false;//проследить
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					foreach (Transform childMat in TPref)
+//						if (childMat.name=="TransWhite") childMat.active=false;
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					TPref.collider.isTrigger = false;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[2] = false; //проследить
+//				}
+//			}
+//		}
+//		
+//		if (lastHitObj&&Builds_Button_Array[3])//проследить
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref4, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//					
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[3] = false;//проследить
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					foreach (Transform childMat in TPref)
+//						if (childMat.name=="TransWhite") childMat.active=false;
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					TPref.collider.isTrigger = false;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[3] = false; //проследить
+//				}
+//			}
+//		}
+//		if (lastHitObj&&Builds_Button_Array[4])//проследить
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref5, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;//проследить pref
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//					
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[4] = false;//проследить
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					foreach (Transform childMat in TPref)
+//						if (childMat.name=="TransWhite") childMat.active=false;
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					TPref.collider.isTrigger = false;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[4] = false; //проследить
+//				}
+//			}
+//		}
+//		if (lastHitObj&&Builds_Button_Array[5])
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref6, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[5] = false;
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[5] = false;
+//				}
+//			}
+//		}
+//		if (lastHitObj&&Builds_Button_Array[6])
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref7, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[6] = false;
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[6] = false;
+//				}
+//			}
+//		}
+//		if (lastHitObj&&Builds_Button_Array[7])
+//		{
+//			if (pref && !Create) {
+//				TPref = Instantiate (pref8, hit.point, Quaternion.Euler (0, 45.0f, 0)) as Transform;
+//				Build bild = (Build)TPref.GetComponent("Build");
+//				bild.active_My = false;
+//				TPref.gameObject.tag="Untagged";
+//				Create = true;
+//			} else if (Create)
+//			{
+//				if(lastHitObj)
+//					TPref.position = lastHitObj.transform.position;
+//				if(Input.GetAxis("Mouse ScrollWheel")>0.0)
+//				{
+//					TPref.Rotate(0,90.0f,0);
+//				}
+//				if(Input.GetAxis("Mouse ScrollWheel")<0.0)
+//				{
+//					TPref.Rotate(0,-90.0f,0);
+//				}
+//			}
+//			if (Input.GetMouseButtonDown(1) && Create)
+//			{
+//				Destroy(TPref.gameObject);
+//				Create = false;
+//				Builds_Button_Array[7] = false;
+//			}
+//			if(lastHitObj.tag == "PlacementPlane_Open")
+//			{
+//				if (Input.GetMouseButtonDown(0) && canCreate)
+//				{
+//					Build bild = (Build)TPref.GetComponent("Build");
+//					bild.active_My = true;
+//					lastHitObj.tag = "PlacementPlane_Taken";
+//					Create = false;
+//					TPref.active=false;
+//					TPref.gameObject.tag="Active";
+//					TPref.active=true;
+//					Builds_Button_Array[7] = false;
+//				}
+//			}
+//		}
 		if (lastHitObj&&Builds_Button_Array[8])
 		{
 			if (pref && !Create) {
@@ -1425,10 +1935,12 @@ public class GameInterface : MonoBehaviour {
 	{
 		if(knopka_1_dostypna)
 		{
+			
 			knopka_zdanyi_1 = knopka_zdanyi_1_dostypna;
 		}
 		else
 		{
+			Text_1_knopki="Нет данных";
 			knopka_zdanyi_1 = knopka_zdanyi_1_nedostypna;
 		}
 		if(knopka_2_dostypna)
@@ -1437,6 +1949,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_2_knopki="\n\n                Нет данных";
 			knopka_zdanyi_2 = knopka_zdanyi_2_nedostypna;
 		}
 		if(knopka_3_dostypna)
@@ -1445,6 +1958,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_3_knopki="Нет данных";
 			knopka_zdanyi_3 = knopka_zdanyi_3_nedostypna;
 		}
 		if(knopka_4_dostypna)
@@ -1453,6 +1967,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_4_knopki="Нет данных";
 			knopka_zdanyi_4 = knopka_zdanyi_4_nedostypna;
 		}
 		if(knopka_5_dostypna)
@@ -1461,6 +1976,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_5_knopki="Нет данных";
 			knopka_zdanyi_5 = knopka_zdanyi_5_nedostypna;
 		}
 		if(knopka_6_dostypna)
@@ -1469,6 +1985,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_6_knopki="Нет данных";
 			knopka_zdanyi_6 = knopka_zdanyi_6_nedostypna;
 		}
 		if(knopka_7_dostypna)
@@ -1477,6 +1994,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_7_knopki="Нет данных";
 			knopka_zdanyi_7 = knopka_zdanyi_7_nedostypna;
 		}
 		if(knopka_8_dostypna)
@@ -1485,6 +2003,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_8_knopki="Нет данных";
 			knopka_zdanyi_8 = knopka_zdanyi_8_nedostypna;
 		}
 		if(knopka_9_dostypna)
@@ -1493,6 +2012,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_9_knopki="Нет данных";
 			knopka_zdanyi_9 = knopka_zdanyi_9_nedostypna;
 		}
 		if(knopka_10_dostypna)
@@ -1501,6 +2021,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_10_knopki="Нет данных";
 			knopka_zdanyi_10 = knopka_zdanyi_10_nedostypna;
 		}
 		if(knopka_11_dostypna)
@@ -1509,6 +2030,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_11_knopki="Нет данных";
 			knopka_zdanyi_11 = knopka_zdanyi_11_nedostypna;
 		}
 		if(knopka_12_dostypna)
@@ -1517,6 +2039,7 @@ public class GameInterface : MonoBehaviour {
 		}
 		else
 		{
+			Text_12_knopki="\n\n       Нет данных";
 			knopka_zdanyi_12 = knopka_zdanyi_12_nedostypna;
 		}
 	}
@@ -1529,6 +2052,9 @@ public class GameInterface : MonoBehaviour {
 		guiskin.customStyles[11].fontSize=Screen.width/fmx;
 		guiskin.customStyles[0].fontSize=Screen.width/fmx;
 		guiskin.customStyles[1].fontSize=Screen.width/fmx2;
+		guiskin.customStyles[2].fontSize=Screen.width/fmx3;
+		guiskin.customStyles[6].fontSize=Screen.width/fmx3;
+		guiskin.customStyles[7].fontSize=Screen.width/fmx3;
 //		if (Restart)
 //		{
 //			Application.LoadLevel(1);

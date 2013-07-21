@@ -21,6 +21,7 @@ var purchased:boolean=false;
 var accept:boolean=true;
 var denied:boolean=false;
 var guiskin:GUISkin;
+var TextObj:String;
 
 function Start () {
 CamInterface=GameObject.Find("Main Camera");
@@ -54,8 +55,8 @@ rectj-=7;
 if (recti<=1){tolevel=fromlevel-1;recti=0;}
 if (rectj<=1){rectj=0;}
 if (recti>1 && rectj>1){
-GUI.BeginGroup(new Rect (rectX,rectY, 150, 90));
-       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд",guiskin.customStyles[1]);
+GUI.BeginGroup(new Rect (rectX,rectY, 120, 120));
+       GUI.Box(Rect (0,0, recti, rectj), "",guiskin.customStyles[2]);
     GUI.EndGroup();
 }
 
@@ -64,17 +65,21 @@ GUI.BeginGroup(new Rect (rectX,rectY, 150, 90));
 if (clicked) {
 recti+=5;
 rectj+=5.5;
-if (recti>=89){tolevel=fromlevel+1;recti=90;}
-if (rectj>=149){rectj=150;}
-GUI.BeginGroup(new Rect (rectX,rectY, 150, 90));
-       GUI.Box(Rect (0,0, recti, rectj), "Апгрейд",guiskin.customStyles[1]);
+if (recti>=119){tolevel=fromlevel+1;recti=120;}
+if (rectj>=119){rectj=120;}
+GUI.BeginGroup(new Rect (rectX,rectY, 120, 120));
+       GUI.Box(Rect (0,0, recti, rectj), "\n     Модернизация",guiskin.customStyles[2]);
  
-       GUI.BeginGroup(new Rect(5,25, 144, 87));
-         GUI.Label(Rect(0,0, 150, 40), "Ур."+fromlevel+" ---> Ур."+tolevel,guiskin.customStyles[1]);
+       GUI.BeginGroup(new Rect(5,35, 144, 87));
+         GUI.Label(Rect(0,0, 150, 40), "  Ур."+fromlevel+" ---> Ур."+tolevel,guiskin.customStyles[6]);
        GUI.EndGroup();
        
-       GUI.BeginGroup(new Rect(5,45, 144, 87));
-         GUI.Label(Rect(0,0, 150, 40), "Стоим. "+cash+"$",guiskin.customStyles[1]);
+       GUI.BeginGroup(new Rect(5,95, 144, 87));
+         GUI.Label(Rect(0,0, 150, 40), "  Стоим. "+cash+"$",guiskin.customStyles[7]);
+       GUI.EndGroup();
+       
+       GUI.BeginGroup(new Rect(5,50, 144, 87));
+         GUI.Label(Rect(0,0, 150, 40), TextObj ,guiskin.customStyles[6]);
        GUI.EndGroup();
        
        GUI.BeginGroup(new Rect(5,65, 145, 20));
