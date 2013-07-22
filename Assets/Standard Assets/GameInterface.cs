@@ -101,11 +101,11 @@ public class GameInterface : MonoBehaviour {
 	//Булевые переменные доступности кнопок
 	private bool knopka_1_dostypna = true;	//Серверная переменная если построены здания на 1 экране
 	private bool knopka_2_dostypna = true;	//Серверная переменная если построены здания на 1 экране
-	private bool knopka_3_dostypna = false; //Серверная переменная если построены здания на 1 экране
-	private bool knopka_4_dostypna = false;	//Серверная переменная если построены здания на 1 экране
-	private bool knopka_5_dostypna = false;	//Серверная переменная если построены здания на 1 экране
-	private bool knopka_6_dostypna = false;	//Серверная переменная если построены здания на 1 экране
-	private bool knopka_7_dostypna = false; //Серверная переменная если построены здания на 1 экране
+	private bool knopka_3_dostypna = true; //Серверная переменная если построены здания на 1 экране
+	private bool knopka_4_dostypna = true;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_5_dostypna = true;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_6_dostypna = true;	//Серверная переменная если построены здания на 1 экране
+	private bool knopka_7_dostypna = true; //Серверная переменная если построены здания на 1 экране
 	//////////////////////////////////////////для демо первые 7 кнопок
 	private bool knopka_8_dostypna = false;
 	private bool knopka_9_dostypna = false;
@@ -210,9 +210,9 @@ public class GameInterface : MonoBehaviour {
 	public bool accept = true;
 	public bool denied = false;
 	public bool LifeUp=false;
-	private bool canScaling=false;   //Серверная переменная разрешено если здание построено(ЭМИ)
-	private bool canLifeUp=false;	//Серверная переменная разрешено если построена Мастерская(Восстановление жизней)
-	private bool canGE=false;		//Серверная переменная разрешена(Ядерный взрыв) ТОЛЬКО ДЛЯ ПОЛНОЙ ВЕРСИИ
+	private bool canScaling=true;   //Серверная переменная разрешено если здание построено(ЭМИ)
+	private bool canLifeUp=true;	//Серверная переменная разрешено если построена Мастерская(Восстановление жизней)
+	private bool canGE=true;		//Серверная переменная разрешена(Ядерный взрыв) ТОЛЬКО ДЛЯ ПОЛНОЙ ВЕРСИИ
 	public bool notEnough=false;
 	//public bool result = false;
 	//public bool recept=false;
