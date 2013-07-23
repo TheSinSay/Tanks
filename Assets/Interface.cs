@@ -1,8 +1,7 @@
 using UnityEngine;
 using System.Collections;
+//Серега
 
-//Никита
-//Никита
 
 public class Interface : MonoBehaviour {
 	public float cooltime = 2.0f;
