@@ -13,6 +13,7 @@ var Explo:GameObject;
 var GoldPref:GameObject;
 var GPref:GameObject;
 var gold:int=0;
+var maxLife:int=7000;
 
 
 var xOffset: float;

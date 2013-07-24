@@ -34,6 +34,9 @@ var accept:boolean = true;
 var denied:boolean = false;
 var zaglushkaGI:boolean=false;
 var UpgWindow:GameObject;
+var LifeUp:boolean=false;
+private var millitaries:GameObject[];
+var notEnough:boolean=false;
 //var goTime:boolean=false;
 //var st:boolean=true;
 //var tex:Texture2D;
@@ -66,13 +69,17 @@ function ConvertTimeToString()			//Конвертация времени
 
 function OnGUI()
 {
+millitaries=GameObject.FindGameObjectsWithTag("Player"); 
 var scrUpgWin:UpgradesBuilds=UpgWindow.GetComponent("UpgradesBuilds");
 WaveTime = Time.timeSinceLevelLoad + startTime;
 currTime=ConvertTimeToString().ToString();
 currWave=genWaves.ToString();
+notEnough=scrUpgWin.notEnough;                            //проверка на достаточность средств и передача сообщения в GameInterface
+LifeUp=transform.GetComponent("GameInterface").LifeUp;    //Спелл для максимального увеличения жизни пушек
 transform.GetComponent("GameInterface").currWave=currWave;
 transform.GetComponent("GameInterface").currGold=currGold;
 transform.GetComponent("GameInterface").currTime=currTime;
+transform.GetComponent("GameInterface").notEnough=notEnough;
 if (!zaglushkaGI){
 cash=transform.GetComponent("GameInterface").cash;
 purchased=transform.GetComponent("GameInterface").purchased;
@@ -99,8 +106,8 @@ zaglushkaGI=false;
 accept=false;
 }
 if (denied){
-transform.GetComponent("GameInterface").denied=true;
 transform.GetComponent("GameInterface").accept=false;
+transform.GetComponent("GameInterface").denied=true;
 //transform.GetComponent("GameInterface").recept=true;
 transform.GetComponent("GameInterface").purchased=false;
 zaglushkaGI=false;
@@ -142,6 +149,16 @@ GO();
 wv=false;
 }
 }
+}
+if (LifeUp){
+for (var millitary:GameObject in millitaries) 
+{
+var compLife:Life=millitary.GetComponent("Life");
+compLife.life=compLife.maxLife;
+compLife.percent=compLife.maxLife;
+compLife.shooting=true;
+}
+transform.GetComponent("GameInterface").LifeUp=false;
 }
 }
 

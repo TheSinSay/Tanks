@@ -8,5 +8,5 @@ function Update() {
 // Y axis at the same speed.
 if (directionY)
 transform.Rotate(0, 0, 2000*Time.deltaTime); else
-transform.Rotate(0,0 , 2000*Time.deltaTime);
+transform.Rotate(-100*Time.deltaTime,0 , 0);
 }

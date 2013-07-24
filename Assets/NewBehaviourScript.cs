@@ -77,7 +77,6 @@ public class NewBehaviourScript : MonoBehaviour
 			
 			isHovering2 = false;
 			Interface inter = (Interface)cam.GetComponent("Interface");
-			inter.interfaceusing = false;
 
 		}
 	}
@@ -93,7 +92,6 @@ public class NewBehaviourScript : MonoBehaviour
 		if (isHovering2)
 		{
 			Interface inter = (Interface)cam.GetComponent("Interface");
-			inter.interfaceusing = true;
 		}
 		if(!isHovering)
 		{

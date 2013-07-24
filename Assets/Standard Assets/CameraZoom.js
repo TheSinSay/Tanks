@@ -20,7 +20,7 @@ function Start()
 {
 UpgradedWindow=GameObject.Find("UpgradeWindow");
 }
-
+//////
 
 function Update () {
 var scrUpg:UpgradesBuilds=UpgradedWindow.GetComponent("UpgradesBuilds");

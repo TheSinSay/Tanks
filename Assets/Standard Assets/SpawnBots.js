@@ -30,9 +30,9 @@ hand[i].gameObject.name=hand[i].gameObject.name+numstr;
 for (var childbody:Transform in hand[i].transform)
 if (childbody.name=="Body") {
 var LfBots:Life=childbody.GetComponent("Life");
-LfBots.life=100*currentWave;
-LfBots.percent=100*currentWave;
-LfBots.gold=8*currentWave;
+LfBots.life=80*currentWave;
+LfBots.percent=80*currentWave;
+LfBots.gold=12*currentWave;
 }
 CreatedObjects[i]=hand[i].gameObject;
 yield WaitForSeconds(3);
